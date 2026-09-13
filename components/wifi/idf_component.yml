@@ -1,0 +1,9 @@
+version: "0.0.2"
+description: "Simple WIFI component for ESP32"
+url: "https://github.com/thewesdev/wifi"
+repository: "https://github.com/thewesdev/wifi.git"
+license: "MIT"
+tags:
+  - wifi
+  - nvs
+  - wrapper
