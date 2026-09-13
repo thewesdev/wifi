@@ -1,0 +1,45 @@
+menu "WIFI"
+	config WIFI_SSID
+		string "SSID"
+		default ""
+		help
+			"Wifi SSID"
+	config WIFI_PASSWORD
+		string "Password"
+		default ""
+		help
+			"Wifi Password"
+	choice WIFI_AUTH_MODE
+		prompt "Wifi Auth Mode"
+		default WIFI_AUTH_MODE_WPA2_PSK
+		help
+			Select auth mode.
+			selected auth mode is used to set weakest authmode to accept in the scan.
+		config WIFI_AUTH_MODE_OPEN
+			bool "OPEN"
+		config WIFI_AUTH_MODE_WEP
+            bool "WEP"
+        config WIFI_AUTH_MODE_WPA_PSK
+            bool "WPA PSK"
+        config WIFI_AUTH_MODE_WPA2_PSK
+            bool "WPA2 PSK"
+        config WIFI_AUTH_MODE_WPA_WPA2_PSK
+            bool "WPA/WPA2 PSK"
+        config WIFI_AUTH_MODE_WAPI_PSK
+            bool "WAPI PSK"
+	endchoice
+	config WIFI_MAXIMUM_RETRY
+		int "Maximum Retry"
+		default 10
+		range 1 255
+		help
+			"Maximum retry number of wifi"
+	config WIFI_AUTH_MODE
+		int
+		default 0 if WIFI_AUTH_MODE_OPEN
+		default 1 if WIFI_AUTH_MODE_WEP
+		default 2 if WIFI_AUTH_MODE_WPA_PSK
+		default 3 if WIFI_AUTH_MODE_WPA2_PSK
+		default 4 if WIFI_AUTH_MODE_WPA_WPA2_PSK
+		default 8 if WIFI_AUTH_MODE_WAPI_PSK
+endmenu
